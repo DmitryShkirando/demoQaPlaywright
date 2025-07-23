@@ -14,8 +14,8 @@ test.describe('Buttons check tests', () => {
 
   test('Check double click functionality', async () => {
     await test.step('Open Elements section', async () => {
-      await homePage.header.navigateToElements();
-      await homePage.waitForElementVisible(homePage.header.elementsSection);
+      await homePage.navigateToElements();
+      await homePage.waitForElementVisible(homePage.elementsSection);
     });
 
     await test.step('Navigate to Buttons section', async () => {
@@ -30,8 +30,8 @@ test.describe('Buttons check tests', () => {
 
   test('Check right click functionality', async () => {
     await test.step('Open Elements section', async () => {
-      await homePage.header.navigateToElements();
-      await homePage.waitForElementVisible(homePage.header.elementsSection);
+      await homePage.navigateToElements();
+      await homePage.waitForElementVisible(homePage.elementsSection);
     });
 
     await test.step('Navigate to Buttons section', async () => {
@@ -46,8 +46,8 @@ test.describe('Buttons check tests', () => {
 
   test('Check dynamic click functionality', async () => {
     await test.step('Open Elements section', async () => {
-      await homePage.header.navigateToElements();
-      await homePage.waitForElementVisible(homePage.header.elementsSection);
+      await homePage.navigateToElements();
+      await homePage.waitForElementVisible(homePage.elementsSection);
     });
 
     await test.step('Navigate to Buttons section', async () => {
