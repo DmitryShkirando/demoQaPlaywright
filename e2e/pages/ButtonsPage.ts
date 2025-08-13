@@ -3,7 +3,6 @@ import { BasePage } from './BasePage';
 import { BUTTONS } from '../config/constants';
 
 export class ButtonsPage extends BasePage {
-  readonly buttonsMenuItem: Locator;
   readonly doubleClickButton: Locator;
   readonly doubleClickMessage: Locator;
   readonly rightClickButton: Locator;
@@ -13,21 +12,15 @@ export class ButtonsPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.buttonsMenuItem = page.getByRole('listitem').filter({ hasText: BUTTONS.BUTTONS_SECTION });
     this.doubleClickButton = page.getByRole('button', { name: 'Double Click Me' });
     this.doubleClickMessage = page.locator('#doubleClickMessage');
     this.rightClickButton = page.getByRole('button', { name: 'Right Click Me' });
     this.rightClickMessage = page.locator('#rightClickMessage');
-    // this.dynamicClickButton = page.getByRole('button', { name: 'Click Me' });
     this.dynamicClickButton = page.getByRole('button', {
       name: 'Click Me',
       exact: true,
     });
     this.dynamicClickMessage = page.locator('#dynamicClickMessage');
-  }
-
-  async navigateToButtonsSection() {
-    await this.clickElement(this.buttonsMenuItem);
   }
 
   async performDoubleClick() {

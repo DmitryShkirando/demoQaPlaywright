@@ -2,20 +2,32 @@ import { test } from '@playwright/test';
 import { FormsPage } from '../pages/FormsPage';
 import { HomePage } from '../pages/HomePage';
 
-test('Check form submission works', async ({ page }) => {
-  const homePage = new HomePage(page);
-  const formsPage = new FormsPage(page);
+import { LeftMenuListPage } from '../pages/LeftMenuListPage';
 
-  await test.step('Open Home and go to Forms section', async () => {
-    await page.goto('https://demoqa.com');
-    //await homePage.navigateToForms();
+test.describe('Forms check tests', () => {
+  let homePage: HomePage;
+  let formsPage: FormsPage;
+  let leftMenuListPage: LeftMenuListPage;
+
+  test.beforeEach(async ({ page }) => {
+    homePage = new HomePage(page);
+    formsPage = new FormsPage(page);
+    leftMenuListPage = new LeftMenuListPage(page);
+    await homePage.navigate();
   });
 
-  await test.step('Fill and submit the form', async () => {
-    await formsPage.fillAndSubmitForm('John Doe', 'john@example.com');
-  });
+  test('Check Name and LastName fields only', async () => {
+    await test.step('Open Forms section', async () => {
+      await homePage.navigateToForms();
+    });
 
-  await test.step('Check success message', async () => {
-    //await formsPage.expectElementText(formsPage.successMessage, 'Form submitted!');
+    await test.step('Navigate to Buttons section', async () => {
+      await leftMenuListPage.navigateToPracticeFormSection();
+      //await formsPage.waitForElementVisible(buttonsPage.buttonsMenuItem);
+    });
+
+    // await test.step('Perform and verify double click', async () => {
+    //   await formsPage.performDoubleClick();
+    // });
   });
 });

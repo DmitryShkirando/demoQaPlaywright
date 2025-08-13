@@ -2,6 +2,7 @@ import { Page, Locator } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class FormsPage extends BasePage {
+  readonly practiceFormMenuItem: Locator;
   readonly nameInput: Locator;
   readonly emailInput: Locator;
   readonly submitButton: Locator;
@@ -9,6 +10,7 @@ export class FormsPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
+    this.practiceFormMenuItem = page.getByText('Practice Form');
     this.nameInput = page.locator('#name');
     this.emailInput = page.locator('#email');
     this.submitButton = page.getByRole('button', { name: 'Submit' });
@@ -19,5 +21,9 @@ export class FormsPage extends BasePage {
     await this.nameInput.fill(name);
     await this.emailInput.fill(email);
     await this.submitButton.click();
+  }
+
+  async navigateToButtonsSection() {
+    await this.clickElement(this.practiceFormMenuItem);
   }
 }

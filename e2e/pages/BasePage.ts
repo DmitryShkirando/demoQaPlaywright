@@ -27,4 +27,8 @@ export abstract class BasePage {
   async verifyUrlContains(text: string) {
     await expect(this.page).toHaveURL(new RegExp(text));
   }
+
+  async expectElementText(locator: Locator, expectedText: string) {
+    await expect(locator).toHaveText(expectedText);
+  }
 }
