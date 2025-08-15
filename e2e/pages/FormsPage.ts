@@ -2,28 +2,28 @@ import { Page, Locator } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class FormsPage extends BasePage {
-  readonly practiceFormMenuItem: Locator;
-  readonly nameInput: Locator;
-  readonly emailInput: Locator;
+  readonly nameInputField: Locator;
+  readonly emailInputField: Locator;
   readonly submitButton: Locator;
   readonly successMessage: Locator;
+  readonly mobileNumberInputField: Locator;
+  readonly maleRadioButton: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.practiceFormMenuItem = page.getByText('Practice Form');
-    this.nameInput = page.locator('#name');
-    this.emailInput = page.locator('#email');
+    this.nameInputField = page.getByRole('textbox', { name: 'First Name' });
+    this.emailInputField = page.getByRole('textbox', { name: 'Last Name' });
+    this.mobileNumberInputField = page.getByRole('textbox', { name: 'Mobile Number' });
     this.submitButton = page.getByRole('button', { name: 'Submit' });
     this.successMessage = page.locator('#success');
+    this.maleRadioButton = page.getByText('Male', { exact: true });
   }
 
-  async fillAndSubmitForm(name: string, email: string) {
-    await this.nameInput.fill(name);
-    await this.emailInput.fill(email);
+  async fillAndSubmitForm(name: string, email: string, mobileNumber: string) {
+    await this.nameInputField.fill(name);
+    await this.emailInputField.fill(email);
+    await this.mobileNumberInputField.fill(mobileNumber);
+    await this.maleRadioButton.click();
     await this.submitButton.click();
-  }
-
-  async navigateToButtonsSection() {
-    await this.clickElement(this.practiceFormMenuItem);
   }
 }

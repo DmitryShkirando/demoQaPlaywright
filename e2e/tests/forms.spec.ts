@@ -21,13 +21,12 @@ test.describe('Forms check tests', () => {
       await homePage.navigateToForms();
     });
 
-    await test.step('Navigate to Buttons section', async () => {
+    await test.step('Navigate to Practice Form section', async () => {
       await leftMenuListPage.navigateToPracticeFormSection();
-      //await formsPage.waitForElementVisible(buttonsPage.buttonsMenuItem);
     });
 
-    // await test.step('Perform and verify double click', async () => {
-    //   await formsPage.performDoubleClick();
-    // });
+    await test.step('Input First Name and Last Name field', async () => {
+      await formsPage.fillAndSubmitForm('Dima', 'sda@.com', '1234567890');
+    });
   });
 });

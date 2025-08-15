@@ -7,6 +7,7 @@ export class LeftMenuListPage extends BasePage {
   readonly buttonsMenuItemElements: Locator;
   readonly textBoxMenuItemElements: Locator;
   readonly practiceFormMenuItemForms: Locator;
+  readonly uploadAndDownloadMenuItemElements: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -15,6 +16,9 @@ export class LeftMenuListPage extends BasePage {
     this.practiceFormMenuItemForms = page
       .getByRole('listitem')
       .filter({ hasText: 'Practice Form' });
+    this.uploadAndDownloadMenuItemElements = page
+      .getByRole('listitem')
+      .filter({ hasText: 'Upload and Download' });
   }
 
   async navigateToButtonsSection() {
@@ -25,5 +29,8 @@ export class LeftMenuListPage extends BasePage {
   }
   async navigateToPracticeFormSection() {
     await this.clickElement(this.practiceFormMenuItemForms);
+  }
+  async navigateToUploadAndDownloadSection() {
+    await this.clickElement(this.uploadAndDownloadMenuItemElements);
   }
 }
