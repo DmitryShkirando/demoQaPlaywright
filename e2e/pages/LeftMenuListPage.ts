@@ -14,6 +14,8 @@ export class LeftMenuListPage extends BasePage {
     this.buttonsMenuItemElements = page.getByRole('listitem').filter({ hasText: 'Buttons' });
     this.textBoxMenuItemElements = page.getByRole('listitem').filter({ hasText: 'Text Box' });
     this.practiceFormMenuItemForms = page
+
+      //this.buttonsMenuItemElements = page.getByRole('listitem').and(page.getByText('Buttons'));
       .getByRole('listitem')
       .filter({ hasText: 'Practice Form' });
     this.uploadAndDownloadMenuItemElements = page

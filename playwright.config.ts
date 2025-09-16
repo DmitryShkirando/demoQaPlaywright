@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { pathToFileURL } from 'url';
 
 /**
  * Read environment variables from file.
@@ -32,7 +33,11 @@ export default defineConfig({
     trace: 'on-first-retry',
     acceptDownloads: true,
   },
+  // globalSetup: "tests/auth.setup.ts",  //
+  // globalTeardown: "tests/auth.tat.ts",
   /* Configure projects for major browsers */
+  timeout: 20000, //для прогона одного теста
+  globalTimeout: 600000, //для прогона всех тестов
   projects: [
     {
       name: 'chromium',
