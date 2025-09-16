@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "mocha:test",
+			"problemMatcher": [],
+			"label": "npm: mocha:test",
+			"detail": "npx mocha ./dist/e2e/tests/**.mocha.js"
+		},
+		{
+			"type": "typescript",
+			"tsconfig": "tsconfig.json",
+			"option": "watch",
+			"problemMatcher": [
+				"$tsc-watch"
+			],
+			"group": "build",
+			"label": "tsc: watch - tsconfig.json"
+		},
+		{
+			"type": "npm",
+			"script": "playwright:debug",
+			"problemMatcher": [],
+			"label": "npm: playwright:debug",
+			"detail": "npx playwright test --ui"
+		},
+	]
+}

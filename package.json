@@ -2,13 +2,20 @@
   "name": "demoqaplaywrigth",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "mocha:test": "npx mocha ./dist/e2e/tests/**.mocha.js",
+    "playwright:debug": "npx playwright test --ui"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.54.1",
-    "@types/node": "^24.0.14"
+    "@playwright/test": "^1.55.0",
+    "@types/chai": "^5.2.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.0.14",
+    "chai": "^6.0.1",
+    "mocha": "^11.7.2"
   }
 }
